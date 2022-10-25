@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation"
+    app:startDestination="@id/getStartedScreen">
+
+    <fragment
+        android:id="@+id/landingPageScreen"
+        android:name="com.example.gadgetsonlinestore.LandingPageScreen"
+        android:label="fragment_landing_page_screen"
+        tools:layout="@layout/fragment_landing_page_screen" />
+    <fragment
+        android:id="@+id/loginScreen"
+        android:name="com.example.gadgetsonlinestore.LoginScreen"
+        android:label="fragment_login_screen"
+        tools:layout="@layout/fragment_login_screen" />
+    <fragment
+        android:id="@+id/signUpScreen"
+        android:name="com.example.gadgetsonlinestore.SignUpScreen"
+        android:label="fragment_sign_up_screen"
+        tools:layout="@layout/fragment_sign_up_screen" />
+    <fragment
+        android:id="@+id/forgotPasswordScreen"
+        android:name="com.example.gadgetsonlinestore.ForgotPasswordScreen"
+        android:label="fragment_forgot_password_screen"
+        tools:layout="@layout/fragment_forgot_password_screen" />
+    <fragment
+        android:id="@+id/gadgetsScreen"
+        android:name="com.example.gadgetsonlinestore.GadgetsScreen"
+        android:label="fragment_gadgets_screen"
+        tools:layout="@layout/fragment_gadgets_screen" />
+    <fragment
+        android:id="@+id/cardDetailsScreen"
+        android:name="com.example.gadgetsonlinestore.CardDetailsScreen"
+        android:label="fragment_card_details_screen"
+        tools:layout="@layout/fragment_card_details_screen" />
+    <fragment
+        android:id="@+id/selectCardScreen"
+        android:name="com.example.gadgetsonlinestore.SelectCardScreen"
+        android:label="fragment_select_card_screen"
+        tools:layout="@layout/fragment_select_card_screen" />
+    <fragment
+        android:id="@+id/paymentScreen"
+        android:name="com.example.gadgetsonlinestore.PaymentScreen"
+        android:label="fragment_payment_screen"
+        tools:layout="@layout/fragment_payment_screen" />
+    <fragment
+        android:id="@+id/getStartedScreen"
+        android:name="com.example.gadgetsonlinestore.GetStartedScreen"
+        android:label="fragment_get_started_screen"
+        tools:layout="@layout/fragment_get_started_screen" />
+
+</navigation>
