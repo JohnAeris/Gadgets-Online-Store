@@ -5,11 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
-import androidx.appcompat.widget.AppCompatButton
 import androidx.navigation.Navigation
-import androidx.navigation.findNavController
 import kotlinx.android.synthetic.main.fragment_get_started_screen.view.*
 
 
