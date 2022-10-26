@@ -9,7 +9,8 @@
     <string name="image_description">Image</string>
 
     <!--LANDING PAGE SCREEN-->
-    <string name="text">LANDING PAGE SCREEN</string>
+    <string name="skip_intro">SKIP INTRO</string>
+    <string name="next">Next</string>
     <string name="landing_page_title_1">LAPTOPS</string>
     <string name="landing_page_description_1">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</string>
     <string name="landing_page_title_2">SMARTPHONES</string>
@@ -19,4 +20,5 @@
 
     <!--LOGIN SCREEN-->
     <string name="log_in">Log In</string>
+
 </resources>
