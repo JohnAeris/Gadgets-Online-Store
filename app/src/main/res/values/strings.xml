@@ -1,12 +1,18 @@
 <resources>
-    <string name="app_name">Gadgɘts</string>->
+    <string name="app_name">Gadg<font fgcolor='#FFE85353'>ɘ</font>ts</string>
+    ->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!--GENERAL-->
+    <string name="image_description">Image</string>
+    <string name="divider">Divider</string>
+    <string name="spacer">Spacer</string>
 
     <!--GET STARTED SCREEN-->
     <string name="get_started">Get Started</string>
     <string name="title">Find Your Gadg<font fgcolor='#FFE85353'>ɘ</font>t</string>
     <string name="short_description">S<font fgcolor='#FFE85353'>ɘ</font>arch. Add. Buy.</string>
-    <string name="image_description">Image</string>
+
 
     <!--LANDING PAGE SCREEN-->
     <string name="skip_intro">SKIP INTRO</string>
@@ -20,5 +26,21 @@
 
     <!--LOGIN SCREEN-->
     <string name="log_in">Log In</string>
+    <string name="label_login_username">Username*</string>
+    <string name="label_login_password">Password*</string>
+    <string name="forgot_password">Forgot your password?</string>
+    <string name="login_with">Login with</string>
+    <string name="google">Connect with Google</string>
+    <string name="new_to_gadgets">New to Gadg<font fgcolor='#FFE85353'>ɘ</font>ts?</string>
+    <string name="register">Register</string>
+
+    <!--SIGN UP SCREEN-->
+    <string name="sign_up">Sign Up</string>
+    <string name="label_firstname">Enter Firstname*</string>
+    <string name="label_lastname">Enter Lastname*</string>
+    <string name="label_signup_username">Create Username*</string>
+    <string name="label_signup_password">Create Password*</string>
+    <string name="register_with">Register with</string>
+
 
 </resources>
