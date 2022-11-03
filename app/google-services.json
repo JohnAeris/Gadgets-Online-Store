@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "209359652696",
+    "project_id": "gadgets-online-store",
+    "storage_bucket": "gadgets-online-store.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209359652696:android:c5978b8d505fccec9cc72d",
+        "android_client_info": {
+          "package_name": "com.example.gadgetsonlinestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "209359652696-1vshpvmq5ibuu0u7ftq1fudmh3hsu0hc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlS6Idy7nsJqVe3qbMzBR7bSi9lLzSubA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "209359652696-1vshpvmq5ibuu0u7ftq1fudmh3hsu0hc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
