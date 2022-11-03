@@ -41,6 +41,15 @@
     <string name="label_signup_username">Create Username*</string>
     <string name="label_signup_password">Create Password*</string>
     <string name="register_with">Register with</string>
+    <string name="already_have_account">Already have an account?</string>
+    <string name="login_here">Login Here</string>
 
+    <!--RESET PASSWORD SCREEN-->
+    <string name="reset">Reset</string>
+    <string name="enter_your_email">Enter your email</string>
+    <string name="reset_password">Reset Password</string>
+
+    <!--HOME SCREEN-->
+    <string name="home_screen">HOME SCREEN</string>
 
 </resources>
