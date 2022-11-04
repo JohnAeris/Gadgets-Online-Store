@@ -1,14 +1,16 @@
 package com.example.gadgetsonlinestore
 
+
+
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
+import com.example.gadgetsonlinestore.data.User
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -32,14 +34,18 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         btnRegister.setOnClickListener {
-            register()
+            val firstName = findViewById<EditText>(R.id.etFirstname).text.toString()
+            val lastName = findViewById<EditText>(R.id.etLastname).text.toString()
+            val email = findViewById<EditText>(R.id.etUsername).text.toString()
+            val password = findViewById<EditText>(R.id.etPassword).text.toString()
+
+            val user = User(firstName, lastName, email, password)
+            register(user)
         }
 
     }
 
-    private fun register() {
-        val firstName = findViewById<EditText>(R.id.etFirstname).text.toString()
-        val lastName = findViewById<EditText>(R.id.etLastname).text.toString()
+    private fun register(user: User) {
         val email = findViewById<EditText>(R.id.etUsername).text.toString()
         val password = findViewById<EditText>(R.id.etPassword).text.toString()
 
@@ -50,13 +56,13 @@ class SignUpActivity : AppCompatActivity() {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(this@SignUpActivity, "Successfully Registered", Toast.LENGTH_LONG).show()
                     }
+                    personCollectionRef.add(user).await()
                 } catch (e: Exception) {
                     withContext(Dispatchers.Main) {
                         Toast.makeText(this@SignUpActivity, e.message, Toast.LENGTH_LONG).show()
                     }
                 }
             }
-
         }
     }
 }
