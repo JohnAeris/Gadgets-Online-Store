@@ -21,4 +21,74 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/tvLoginStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/inter_extra_light"
+        android:text="Logged In"
+        android:textColor="@color/raisin_black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvUserFirstname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/inter_extra_light"
+        android:text="First Name"
+        android:textColor="@color/raisin_black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvHomeScreen"
+        app:layout_constraintStart_toStartOf="@+id/tvHomeScreen"
+        app:layout_constraintTop_toBottomOf="@+id/tvHomeScreen" />
+
+    <TextView
+        android:id="@+id/tvUserLastname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/inter_extra_light"
+        android:text="Last Name"
+        android:textColor="@color/raisin_black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvUserFirstname"
+        app:layout_constraintStart_toStartOf="@+id/tvUserFirstname"
+        app:layout_constraintTop_toBottomOf="@+id/tvUserFirstname" />
+
+    <TextView
+        android:id="@+id/tvUserEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/inter_extra_light"
+        android:text="email@gmail.com"
+        android:textColor="@color/raisin_black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvUserFirstname"
+        app:layout_constraintStart_toStartOf="@+id/tvUserFirstname"
+        app:layout_constraintTop_toBottomOf="@+id/tvUserLastname" />
+
+    <TextView
+        android:id="@+id/tvUserPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/inter_extra_light"
+        android:text="password"
+        android:textColor="@color/raisin_black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/tvUserFirstname"
+        app:layout_constraintStart_toStartOf="@+id/tvUserFirstname"
+        app:layout_constraintTop_toBottomOf="@+id/tvUserEmail" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
