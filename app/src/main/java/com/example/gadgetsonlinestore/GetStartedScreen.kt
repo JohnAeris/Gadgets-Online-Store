@@ -6,25 +6,28 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.Navigation
-import kotlinx.android.synthetic.main.fragment_get_started_screen.view.*
+import com.example.gadgetsonlinestore.databinding.FragmentGetStartedScreenBinding
 
 
 class GetStartedScreen : Fragment() {
 
+    private lateinit var binding: FragmentGetStartedScreenBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        val view = inflater.inflate(R.layout.fragment_get_started_screen, container, false)
+        val binding = FragmentGetStartedScreenBinding.inflate(inflater, container, false)
+        val view = binding.root
 
         //Button to navigate to Landing Page Screen
-        view.btnGetStarted.setOnClickListener {
+        binding.btnGetStarted.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.navigateToLandingPageScreen)
         }
 
         //Button to navigate to Login Screen
-        view.btnSkip.setOnClickListener {
+        binding.btnSkip.setOnClickListener {
             Navigation.findNavController(view).navigate(R.id.navigateToLoginScreen)
         }
 

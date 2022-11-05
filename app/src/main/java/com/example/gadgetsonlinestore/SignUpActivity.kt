@@ -2,16 +2,21 @@ package com.example.gadgetsonlinestore
 
 
 
+import android.content.ContentValues.TAG
 import android.content.Intent
+import android.nfc.Tag
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.EditText
+import android.util.Log
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.example.gadgetsonlinestore.data.User
-import com.google.firebase.firestore.ktx.firestore
+import com.example.gadgetsonlinestore.databinding.ActivitySignUpBinding
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import kotlinx.android.synthetic.main.activity_sign_up.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -21,48 +26,69 @@ import kotlinx.coroutines.withContext
 class SignUpActivity : AppCompatActivity() {
 
     private lateinit var auth: FirebaseAuth
-    private val personCollectionRef = Firebase.firestore.collection("Users")
+    private lateinit var binding: ActivitySignUpBinding
+    //private lateinit var database: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_sign_up)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        auth = FirebaseAuth.getInstance()
+        auth = Firebase.auth
 
-        tvLoginHere.setOnClickListener {
+        binding.tvLoginHere.setOnClickListener {
             startActivity(Intent(this, LoginActivity::class.java))
         }
 
-        btnRegister.setOnClickListener {
-            val firstName = findViewById<EditText>(R.id.etFirstname).text.toString()
-            val lastName = findViewById<EditText>(R.id.etLastname).text.toString()
-            val email = findViewById<EditText>(R.id.etUsername).text.toString()
-            val password = findViewById<EditText>(R.id.etPassword).text.toString()
-
-            val user = User(firstName, lastName, email, password)
-            register(user)
+        binding.btnRegister.setOnClickListener {
+            signUp()
         }
 
     }
 
-    private fun register(user: User) {
-        val email = findViewById<EditText>(R.id.etUsername).text.toString()
-        val password = findViewById<EditText>(R.id.etPassword).text.toString()
+    private fun signUp() {
+        val firstName = binding.etFirstname.text.toString()
+        val lastName = binding.etLastname.text.toString()
+        val email = binding.etUsername.text.toString()
+        val password = binding.etPassword.text.toString()
 
-        if (email.isNotEmpty() && password.isNotEmpty()) {
+        if (email.isNotEmpty() && password.isNotEmpty() && firstName.isNotEmpty() && lastName.isNotEmpty()) {
             CoroutineScope(Dispatchers.IO).launch {
                 try {
-                    auth.createUserWithEmailAndPassword(email, password).await()
-                    withContext(Dispatchers.Main) {
-                        Toast.makeText(this@SignUpActivity, "Successfully Registered", Toast.LENGTH_LONG).show()
-                    }
-                    personCollectionRef.add(user).await()
+                    auth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener (this@SignUpActivity) { task ->
+                            if (task.isSuccessful) {
+
+
+                                Log.d(TAG, "createUserAccount: Success")
+                                Toast.makeText(this@SignUpActivity, "Successfully Registered", Toast.LENGTH_LONG).show()
+
+                                binding.etFirstname.text?.clear()
+                                binding.etLastname.text?.clear()
+                                binding.etUsername.text?.clear()
+                                binding.etPassword.text?.clear()
+
+                                val intent = Intent(this@SignUpActivity, LoginActivity::class.java)
+                                startActivity(intent)
+                            } else {
+                                Log.w(TAG, "createUserAccount: Unsuccessful")
+                                Toast.makeText(this@SignUpActivity, "Failed Registration", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                        .addOnFailureListener {
+                            Toast.makeText(this@SignUpActivity, "Error: ${it.localizedMessage}", Toast.LENGTH_SHORT).show()
+                        }
+                        .await()
                 } catch (e: Exception) {
                     withContext(Dispatchers.Main) {
-                        Toast.makeText(this@SignUpActivity, e.message, Toast.LENGTH_LONG).show()
+                        Toast.makeText(this@SignUpActivity, "Error: ${e.message}", Toast.LENGTH_LONG).show()
                     }
                 }
             }
+        } else {
+            Toast.makeText(this@SignUpActivity, "Fill all fields", Toast.LENGTH_SHORT).show()
         }
     }
+
+
 }

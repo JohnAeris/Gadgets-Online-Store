@@ -13,10 +13,12 @@ import androidx.core.view.get
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.widget.ViewPager2
 import com.example.gadgetsonlinestore.data.IntroSlide
-import kotlinx.android.synthetic.main.fragment_landing_page_screen.*
+import com.example.gadgetsonlinestore.databinding.FragmentLandingPageScreenBinding
 
 
 class LandingPageScreen : Fragment() {
+
+    private lateinit var binding: FragmentLandingPageScreenBinding
 
     private val landingPageAdapter = LandingPageAdapter(
         listOf(
@@ -41,20 +43,21 @@ class LandingPageScreen : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_landing_page_screen, container, false)
+        val binding = FragmentLandingPageScreenBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        landingPageScreenViewPager.adapter = landingPageAdapter
+        binding.landingPageScreenViewPager.adapter = landingPageAdapter
 
         //Page Indicator
         pageIndicator()
         pageCurrentIndicator(0)
-        landingPageScreenViewPager.registerOnPageChangeCallback(object :
+        binding.landingPageScreenViewPager.registerOnPageChangeCallback(object :
             ViewPager2.OnPageChangeCallback() {
 
             override fun onPageSelected(position: Int) {
@@ -64,9 +67,9 @@ class LandingPageScreen : Fragment() {
         })
 
         //Button to navigate on next page until Login Activity
-        nextBtn.setOnClickListener{
-            if (landingPageScreenViewPager.currentItem + 1 < landingPageAdapter.itemCount) {
-                landingPageScreenViewPager.currentItem += 1
+        binding.nextBtn.setOnClickListener{
+            if (binding.landingPageScreenViewPager.currentItem + 1 < landingPageAdapter.itemCount) {
+                binding.landingPageScreenViewPager.currentItem += 1
             } else {
                 Intent(context?.applicationContext, LoginActivity::class.java).also {
                     startActivity(it)
@@ -75,7 +78,7 @@ class LandingPageScreen : Fragment() {
         }
 
         //Button to navigate on Login Activity
-        skipBtn.setOnClickListener {
+        binding.skipBtn.setOnClickListener {
             Intent(context?.applicationContext, LoginActivity::class.java).also {
                 startActivity(it)
             }
@@ -98,15 +101,15 @@ class LandingPageScreen : Fragment() {
                 )
                 this?.layoutParams = layoutParams
             }
-            indicatorContainer.addView(indicators[i])
+            binding.indicatorContainer.addView(indicators[i])
         }
 
     }
 
     private fun pageCurrentIndicator(index: Int) {
-        val childCount = indicatorContainer.childCount
+        val childCount = binding.indicatorContainer.childCount
         for (i in 0 until childCount) {
-            val imageView = indicatorContainer[i] as ImageView
+            val imageView = binding.indicatorContainer[i] as ImageView
             if (i == index) {
                 imageView.setImageDrawable(
                     context?.let {
